@@ -1,11 +1,21 @@
 {
   "name": "three-js-comic-book-shader",
   "version": "1.0.0",
-  "description": "",
+  "description": "https://github.com/user-attachments/assets/1642cc49-a7bb-437e-8a45-fc4ad8058e4a",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "vite build",
+    "preview": "vite preview --port 8081",
+    "dev": "vite --port 8080"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "main": "index.js",
+  "dependencies": {
+    "lil-gui": "^0.20.0",
+    "three": "^0.171.0"
+  },
+  "devDependencies": {
+    "vite": "^6.0.3"
+  }
 }

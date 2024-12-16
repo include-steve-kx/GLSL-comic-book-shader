@@ -1,3 +1,9 @@
+import * as THREE from 'three';
+import { OrbitControls } from "three/addons";
+import GUI from 'lil-gui'; 
+import { clamp, remap, mix, smoothstep } from './src/math.js';
+import { vertexShader, fragmentShader } from './src/shaders.js';
+
 let camera, scene, renderer;
 let geometry, material, mesh, group;
 let controls;
@@ -69,7 +75,7 @@ let flipPercent = 27; // input to a smoothstep() function that controls in what 
 
 let matrixT = 0; // 0 --- world space, normal view; 1 --- screen space, as if the object is right in front of the camera, takes up exactly the entire screen
 function createPanel() {
-    panel = new lil.GUI( { width: 200 } );
+    panel = new GUI( { width: 200 } );
     panel.close();
 
     const folder1 = panel.addFolder('Page flipping');
@@ -146,7 +152,7 @@ function changeProgress(value) {
 let loader = new THREE.TextureLoader();
 function loadTexture(idx) {
     return new Promise((resolve, reject) => {
-        loader.load(`/static/imgs/${idx}.jpg`, (texture) => {
+        loader.load(`${import.meta.env.BASE_URL}imgs/${idx}.jpg`, (texture) => {
             resolve(texture);
         });
     });
@@ -226,7 +232,7 @@ async function init() {
     scene.add(group);
 
     // orbit control
-    controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls = new OrbitControls(camera, renderer.domElement);
     controls.enableZoom = false;
 
     setupEventListeners();

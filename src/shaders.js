@@ -36,7 +36,7 @@ const commonShader = `
     }
 `;
 
-const fragmentShader = `
+export const fragmentShader = `
     varying vec2 vUv;
     varying float initialNormalY;
     
@@ -58,7 +58,7 @@ const fragmentShader = `
     }
 `;
 
-const vertexShader = `
+export const vertexShader = `
     #define PI 3.14159
     
     uniform float matrixT;
